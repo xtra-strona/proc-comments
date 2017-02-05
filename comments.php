@@ -2,9 +2,9 @@
 
 //DODAJ DO HEADERA STRONY
 /*
-<?php if(page()->comments): ?>
- <script src='<?=urls()->FieldtypeComments?>comments.min.js'></script>
- <link rel="stylesheet" href="<?=urls()->FieldtypeComments?>comments.css">
+<?php if($page->comments): ?>
+	 <link rel='stylesheet' type='text/css' href='<?=$config->urls->FieldtypeComments?>comments.css' />
+	 <script type='text/javascript' src='<?=$config->urls->FieldtypeComments?>comments.min.js'></script>
  <?php endif; ?>
 */
 
@@ -30,7 +30,8 @@ $comments = $page->comments->slice($start, $limit);
       'pendingMessage' => 'Twoj komentarz musi zostać zatwierdzony Przez Admina',
       'successMessage' => 'Dzięki Twoj Komentarz został zapisany',
       'errorMessage' => 'Wystąpily Bledy i komentarz nie został zatwierdzony',
-
+      'processInput' => true,
+      
       'attrs' => array(
       'id' => 'CommentForm',
       'action' => './',
@@ -60,3 +61,4 @@ $comments = $page->comments->slice($start, $limit);
   if($start + $limit < count($page->comments)) {
       echo "<a href='./page" . ($input->pageNum + 1) . "'>Next Comments</a> ";
   }
+?>
